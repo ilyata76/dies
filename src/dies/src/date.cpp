@@ -14,7 +14,7 @@ bool leapyear(int Y) {
 }
 
 bool check(int Y, int M, int D) {
-	if (Y <= 0 || D <= 0 || M <= 0 || M > 12 || D > 31) return false;
+	if (Y <= 0 || D <= 0 || M <= 0 || M > 12 || D > 31 || Y >= INT_CHECK) return false;
 		if (M == 1) {
 			if (D > 31) return false;
 		} else if (M == 2 && leapyear(Y)) {
@@ -145,4 +145,35 @@ bool operator == (dies& a, dies& b) {
 		std::cerr << std::boolalpha << "a.CHECK() == " << a.CHECK() << "; b.CHECK() == " << b.CHECK() << std::endl;
 		return false;
 	}
+}
+
+std::ostream& operator << (std::ostream& out, dies& X) {
+	if (X.CHECK()) {
+		out
+			<< std::setw(4) << std::setfill('0') << X.getYear() << "."
+			<< std::setw(2) << std::setfill('0') << X.getMonth() << "."
+			<< std::setw(2) << std::setfill('0') << X.getDay();
+		return out;
+	} else { 
+		system("chcp 65001");
+		out 
+			<< std::boolalpha << "X.CHECK() == " << X.CHECK() << std::endl;
+		return out;
+	}
+}
+
+std::istream& operator >> (std::istream& in, dies& X) {
+	char A = ' '; in >> X.YYYY >> A >> X.MM >> A >> X.DD;
+	if (A == '.') {
+		if (check(X.YYYY, X.MM, X.DD)) {
+			return in;
+		} else {
+			X.YYYY = INT_CHECK; X.MM = INT_CHECK; X.DD = INT_CHECK; return in;
+		}
+	} else {
+		X.YYYY = INT_CHECK; X.MM = INT_CHECK; X.DD = INT_CHECK; return in;
+	}
+
+
+	return in;
 }

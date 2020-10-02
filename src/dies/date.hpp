@@ -24,7 +24,7 @@
 
 
 class dies {
-private:
+protected:
 	int DD{}, MM{}, YYYY{};
 public:
 	dies() { DD = INT_CHECK; MM = INT_CHECK; YYYY = INT_CHECK; };
@@ -53,6 +53,26 @@ public:
 	friend bool operator <= (dies& a, dies& b);
 	friend bool operator == (dies& a, dies& b);
 
+	friend std::istream& operator >> (std::istream& in, dies& X);
+	friend std::ostream& operator << (std::ostream& out, dies& X);
+
+	friend int operator - (dies a, dies b);
+
+	dies operator - (int X);
+	dies operator + (int X);
+	dies operator = (dies X);
+
+	int getDay() {
+		return this->DD;
+	}
+	int getMonth() {
+		return this->MM;
+	}
+	int getYear() {
+		return this->YYYY;
+	}
+
+	~dies() {};
 };
 
 
