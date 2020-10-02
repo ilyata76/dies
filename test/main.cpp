@@ -11,13 +11,21 @@ int main()
 
 	dies a = { 1,1,1 }; dies b = { 2021, 10, 10 };
 	std::cout << a.CHECK() << std::endl;
-	a.input(2020, 9, 20);
+	a.input(2020, 1, 1);
 
 	std::cout << a.CHECK() << std::endl;
 	std::cout << b.CHECK() << std::endl;
 	std::cout << (a > b) << std::endl;
 	std::cout << (a >= b) << std::endl;
-
+	std::cout << (a == b) << std::endl;
+	std::cout << a << std::endl;
+	a = a + 10;
+	//std::cout << a << std::endl;
+	//a = a + 100;
+	std::cout << a << std::endl;
+	a = a - 10;
+	std::cout << a << std::endl;
+	a = a - 100;
 	std::cout << a << std::endl;
 	dies c;
 	cin >> c;

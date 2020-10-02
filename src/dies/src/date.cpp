@@ -134,7 +134,7 @@ bool operator <= (dies& a, dies& b) {
 
 bool operator == (dies& a, dies& b) {
 	if (a.CHECK() && b.CHECK()) {
-		if (a.YYYY = b.YYYY) {
+		if (a.YYYY == b.YYYY) {
 			if (a.MM == b.MM) {
 				if (a.DD == b.DD) return true;
 				else return false;
@@ -166,14 +166,55 @@ std::istream& operator >> (std::istream& in, dies& X) {
 	char A = ' '; in >> X.YYYY >> A >> X.MM >> A >> X.DD;
 	if (A == '.') {
 		if (check(X.YYYY, X.MM, X.DD)) {
-			return in;
+			//
 		} else {
 			X.YYYY = INT_CHECK; X.MM = INT_CHECK; X.DD = INT_CHECK; return in;
 		}
 	} else {
 		X.YYYY = INT_CHECK; X.MM = INT_CHECK; X.DD = INT_CHECK; return in;
 	}
-
-
 	return in;
+}
+
+dies dies::operator = (dies& X) {
+	this->DD = X.DD; this->MM = X.MM; this->YYYY = X.YYYY; 
+		return *this;
+}
+
+dies dies::operator + (int X) {
+	int XD = 0;
+	while (true) {
+		if (this->MM == 1 || this->MM == 3 || this->MM == 5 || this->MM == 7 || this->MM == 8 || this->MM == 10 || this->MM == 12) {
+			if (DD + X <= 31) { DD = DD + X; break; } 
+			else if ( DD + X == 32) { DD = 1; MM++; if (MM == 13) { MM = 1; YYYY++; } break; } 
+			else { XD = 31 - DD; DD = 1; MM++; X = X - XD - 1; if (MM == 13) { MM = 1; YYYY++; } }
+		} else if (this->MM == 4 || this->MM == 6 || this->MM == 9 || this->MM == 11) {
+			if (DD + X <= 30) { DD = DD + X; break; } 
+			else if (DD + X == 31) { DD = 1; MM++; if (MM == 13) { MM = 1; YYYY++; } break; } 
+			else { XD = 30 - DD; DD = 1; MM++; X = X - XD - 1; if (MM == 13) { MM = 1; YYYY++; } }
+		} else if (this->MM == 2 && leapyear(this->YYYY)) {
+			if (DD + X <= 29) { DD = DD + X; break; }
+			else if (DD + X == 30) { DD = 1; MM++; if (MM == 13) { MM = 1; YYYY++; } break; }
+			else { XD = 29 - DD; DD = 1; MM++; X = X - XD - 1; if (MM == 13) { MM = 1; YYYY++; } }
+		} else if (this->MM == 2 && !leapyear(this->YYYY)) {
+			if (DD + X <= 28) { DD = DD + X; break; }
+			else if (DD + X == 29) { DD = 1; MM++; if (MM == 13) { MM = 1; YYYY++; } break; }
+			else { XD = 28 - DD; DD = 1; MM++; X = X - XD - 1; if (MM == 13) { MM = 1; YYYY++; } }
+		}
+	}
+	return *this;
+}
+
+dies dies::operator - (int X) {
+	while (X) {
+		DD--; X--;
+		if (DD == 0) {
+			if (this->MM == 8 || this->MM == 2 || this->MM == 4 || this->MM == 6 || this->MM == 9 || this->MM == 11) { MM--; DD = 31; }
+			else if (this->MM == 1) { MM = 12; YYYY--; DD = 31; }
+			else if (this->MM == 5 || this->MM == 7 || this->MM == 10 || this->MM == 12) { MM--; DD = 30; }
+			else if (this->MM == 3 && leapyear(this->YYYY)) { MM--; DD = 29; }
+			else if (this->MM == 3 && !leapyear(this->YYYY)) { MM--; DD = 28; }
+		}
+	}
+	return *this;
 }

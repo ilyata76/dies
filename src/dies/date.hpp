@@ -60,7 +60,7 @@ public:
 
 	dies operator - (int X);
 	dies operator + (int X);
-	dies operator = (dies X);
+	dies operator = (dies& X);
 
 	int getDay() {
 		return this->DD;
