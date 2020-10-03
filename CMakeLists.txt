@@ -10,6 +10,7 @@ set (HEADERS
  
 set (SOURCES 
 	src/dies/src/date.cpp
+	src/dies/src/drand.cpp
 	test/main.cpp) 
  
 add_executable (${PROJECT} ${HEADERS} ${SOURCES})

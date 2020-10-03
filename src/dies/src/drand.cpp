@@ -24,8 +24,5 @@ dies drand(dies a = { 1,1,1 }, dies b = { 1,1,1 }) {
 	dies result = { 1, 1, 1 };
 
 	if (b < a) { dies temp{ 1,1,1 }; temp = a; a = b; b = temp; };
-
-
-
 	return result;
 }
