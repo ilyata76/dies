@@ -19,19 +19,17 @@ int main()
 	std::cout << (a >= b) << std::endl;
 	std::cout << (a == b) << std::endl;
 	std::cout << a << std::endl;
-	a = a + 10;
-	//std::cout << a << std::endl;
-	//a = a + 100;
-	std::cout << a << std::endl;
-	a = a - 10;
-	std::cout << a << std::endl;
-	a = a - 100;
-	std::cout << a << std::endl;
-	dies c;
-	cin >> c;
-	cout << c;
+	b.input(2020, 1, 11);
+	dies d;
+	d = a + 22;
 
+	std::cout << b << std::endl;
+	std::cout << ( b - a )  << std::endl;
+	std::cout << ( d - a )  << std::endl;
+	std::cout << a  << std::endl;
+	std::cout << d.getDay() << std::endl;
 
+	//sap[ fksodaifjsadio fjsoifajsfiosadjif b-a a-b чё за хута
 	system("pause");
 	return 0;
 }

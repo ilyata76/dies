@@ -72,7 +72,7 @@ public:
 		return this->YYYY;
 	}
 
-	~dies() {};
+	~dies() { };
 };
 
 

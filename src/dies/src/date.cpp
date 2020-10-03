@@ -181,40 +181,135 @@ dies dies::operator = (dies& X) {
 		return *this;
 }
 
-dies dies::operator + (int X) {
-	int XD = 0;
+dies dies::operator+ (int X) {
+	int XD = 0; dies result = *this;
 	while (true) {
-		if (this->MM == 1 || this->MM == 3 || this->MM == 5 || this->MM == 7 || this->MM == 8 || this->MM == 10 || this->MM == 12) {
-			if (DD + X <= 31) { DD = DD + X; break; } 
-			else if ( DD + X == 32) { DD = 1; MM++; if (MM == 13) { MM = 1; YYYY++; } break; } 
-			else { XD = 31 - DD; DD = 1; MM++; X = X - XD - 1; if (MM == 13) { MM = 1; YYYY++; } }
-		} else if (this->MM == 4 || this->MM == 6 || this->MM == 9 || this->MM == 11) {
-			if (DD + X <= 30) { DD = DD + X; break; } 
-			else if (DD + X == 31) { DD = 1; MM++; if (MM == 13) { MM = 1; YYYY++; } break; } 
-			else { XD = 30 - DD; DD = 1; MM++; X = X - XD - 1; if (MM == 13) { MM = 1; YYYY++; } }
-		} else if (this->MM == 2 && leapyear(this->YYYY)) {
-			if (DD + X <= 29) { DD = DD + X; break; }
-			else if (DD + X == 30) { DD = 1; MM++; if (MM == 13) { MM = 1; YYYY++; } break; }
-			else { XD = 29 - DD; DD = 1; MM++; X = X - XD - 1; if (MM == 13) { MM = 1; YYYY++; } }
-		} else if (this->MM == 2 && !leapyear(this->YYYY)) {
-			if (DD + X <= 28) { DD = DD + X; break; }
-			else if (DD + X == 29) { DD = 1; MM++; if (MM == 13) { MM = 1; YYYY++; } break; }
-			else { XD = 28 - DD; DD = 1; MM++; X = X - XD - 1; if (MM == 13) { MM = 1; YYYY++; } }
+		if (result.MM == 1 || result.MM == 3 || result.MM == 5 || result.MM == 7 || result.MM == 8 || result.MM == 10 || result.MM == 12) {
+			if (result.DD + X <= 31) { result.DD = result.DD + X; break; } 
+			else if ( result.DD + X == 32) { result.DD = 1; result.MM++; if (result.MM == 13) { result.MM = 1; result.YYYY++; } break; } 
+			else { XD = 31 - result.DD; result.DD = 1; result.MM++; X = X - XD - 1; if (result.MM == 13) { result.MM = 1; result.YYYY++; } }
+		} else if (result.MM == 4 || result.MM == 6 || result.MM == 9 || result.MM == 11) {
+			if (result.DD + X <= 30) { result.DD = result.DD + X; break; } 
+			else if (result.DD + X == 31) { result.DD = 1; result.MM++; if (result.MM == 13) { result.MM = 1; result.YYYY++; } break; } 
+			else { XD = 30 - result.DD; result.DD = 1; result.MM++; X = X - XD - 1; if (result.MM == 13) { result.MM = 1; result.YYYY++; } }
+		} else if (result.MM == 2 && leapyear(result.YYYY)) {
+			if (result.DD + X <= 29) { result.DD = result.DD + X; break; }
+			else if (result.DD + X == 30) { result.DD = 1; result.MM++; if (result.MM == 13) { result.MM = 1; result.YYYY++; } break; }
+			else { XD = 29 - result.DD; result.DD = 1; result.MM++; X = X - XD - 1; if (result.MM == 13) { result.MM = 1; result.YYYY++; } }
+		} else if (result.MM == 2 && !leapyear(result.YYYY)) {
+			if (result.DD + X <= 28) { result.DD = result.DD + X; break; }
+			else if (result.DD + X == 29) { result.DD = 1; result.MM++; if (result.MM == 13) { result.MM = 1; result.YYYY++; } break; }
+			else { XD = 28 - result.DD; result.DD = 1; result.MM++; X = X - XD - 1; if (result.MM == 13) { result.MM = 1; result.YYYY++; } }
 		}
 	}
-	return *this;
+	return result;
 }
 
 dies dies::operator - (int X) {
+	dies result = *this;
 	while (X) {
-		DD--; X--;
-		if (DD == 0) {
-			if (this->MM == 8 || this->MM == 2 || this->MM == 4 || this->MM == 6 || this->MM == 9 || this->MM == 11) { MM--; DD = 31; }
-			else if (this->MM == 1) { MM = 12; YYYY--; DD = 31; }
-			else if (this->MM == 5 || this->MM == 7 || this->MM == 10 || this->MM == 12) { MM--; DD = 30; }
-			else if (this->MM == 3 && leapyear(this->YYYY)) { MM--; DD = 29; }
-			else if (this->MM == 3 && !leapyear(this->YYYY)) { MM--; DD = 28; }
+		result.DD--; X--;
+		if (result.DD == 0) {
+			if (result.MM == 8 || result.MM == 2 || result.MM == 4 || result.MM == 6 || result.MM == 9 || result.MM == 11) { result.MM--; result.DD = 31; }
+			else if (result.MM == 1) { result.MM = 12; result.YYYY--; result.DD = 31; }
+			else if (result.MM == 5 || result.MM == 7 || result.MM == 10 || result.MM == 12) { result.MM--; result.DD = 30; }
+			else if (result.MM == 3 && leapyear(result.YYYY)) { result.MM--; result.DD = 29; }
+			else if (result.MM == 3 && !leapyear(result.YYYY)) { result.MM--; result.DD = 28; }
 		}
 	}
-	return *this;
+	return result;
+}
+
+int operator - (dies b, dies a) {
+	int sign = 1;
+	if (b < a) { 
+		dies temp = { 1, 1, 1 }; 
+		temp = a; a = b; 
+		b = temp; 
+		sign = -1;
+	}
+	// current day is taken into account
+	// in calc
+	// last day - not
+
+	int Yr = b.YYYY - a.YYYY; int aM = 0, bM = 0, cM = 0, itM = 0;
+
+	if (Yr) {
+
+		// first month
+
+		if (a.MM == 1 || a.MM == 3 || a.MM == 5 || a.MM == 7 || a.MM == 8 || a.MM == 10 || a.MM == 12) aM += (31 - a.DD);
+		else if (a.MM == 2 && leapyear(a.YYYY)) aM += (29 - a.DD);
+		else if (a.MM == 2 && !leapyear(a.YYYY)) aM += (28 - a.DD);
+		else if (a.MM == 4 || a.MM == 6 || a.MM == 9 || a.MM == 11) aM += (30 - a.DD);
+
+		aM++; // current day
+
+		// first year excluding the first month ^
+
+		for (itM = a.MM + 1; itM != 13; itM++) {
+			if (itM == 1 || itM == 3 || itM == 5 || itM == 7 || itM == 8 || itM == 10 || itM == 12) aM += 31;
+			else if (itM == 2 && leapyear(a.YYYY)) aM += 29;
+			else if (itM == 2 && !leapyear(a.YYYY)) aM += 28;
+			else if (itM == 4 || itM == 6 || itM == 9 || itM == 11) aM += 30;
+		}
+
+		// intermediate
+
+		for (int i = 1, Yr = (b.YYYY - a.YYYY + 1) - 2; Yr > 0; Yr--, i++) {
+			for (itM = 1; itM != 13; itM++) {
+				if (itM == 1 || itM == 3 || itM == 5 || itM == 7 || itM == 8 || itM == 10 || itM == 12) cM += 31;
+				else if (itM == 2 && leapyear(a.YYYY + i)) cM += 29;
+				else if (itM == 2 && !leapyear(a.YYYY + i)) cM += 28;
+				else if (itM == 4 || itM == 6 || itM == 9 || itM == 11) cM += 30;
+			}
+		}
+
+		// the last year 
+
+		if (b.MM != 1) {
+			for (itM = 1; itM != b.MM; itM++) {
+				if (itM == 1 || itM == 3 || itM == 5 || itM == 7 || itM == 8 || itM == 10 || itM == 12) bM += 31;
+				else if (itM == 2 && leapyear(b.YYYY)) bM += 29;
+				else if (itM == 2 && !leapyear(b.YYYY)) bM += 28;
+				else if (itM == 4 || itM == 6 || itM == 9 || itM == 11) bM += 30;
+			}
+		}
+		bM += b.DD - 1;
+
+		//
+
+		return sign * (aM + bM + cM);
+
+	} else if (a.YYYY == b.YYYY && a.MM != b.MM && (a.DD != b.DD || a.DD == b.DD)) {
+		if (b.MM != 1) {
+			//
+
+			if (a.MM == 1 || a.MM == 3 || a.MM == 5 || a.MM == 7 || a.MM == 8 || a.MM == 10 || a.MM == 12) aM += (31 - a.DD);
+			else if (a.MM == 2 && leapyear(a.YYYY)) aM += (29 - a.DD);
+			else if (a.MM == 2 && !leapyear(a.YYYY)) aM += (28 - a.DD);
+			else if (a.MM == 4 || a.MM == 6 || a.MM == 9 || a.MM == 11) aM += (30 - a.DD);
+			
+			aM++;
+
+			//
+
+			for (itM = a.MM + 1; itM != b.MM; itM++) {
+				if (itM == 1 || itM == 3 || itM == 5 || itM == 7 || itM == 8 || itM == 10 || itM == 12) bM += 31;
+				else if (itM == 2 && leapyear(b.YYYY)) bM += 29;
+				else if (itM == 2 && !leapyear(b.YYYY)) bM += 28;
+				else if (itM == 4 || itM == 6 || itM == 9 || itM == 11) bM += 30;
+			}
+
+			bM += b.DD - 1;
+
+			return sign * (aM + bM);
+
+		}
+	} else if (a.YYYY == b.YYYY && a.MM == b.MM && a.DD == b.DD) {
+		std::cout << "kek";
+		return sign * 1;
+	} else if (a.YYYY == b.YYYY && a.MM == b.MM && a.DD != b.DD) {
+		return sign * (b.DD - a.DD);
+	} else return 0;
 }
