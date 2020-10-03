@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef BASE_H
-	#define BASE_H
+#ifndef BASE_HPP
+	#define BASE_HPP
 
 	#include <iostream>
 	#include <iomanip>
@@ -24,6 +24,7 @@
 
 	bool check(int Y, int M, int D);
 	bool leapyear(int Y);
+
 
 
 class dies {
@@ -86,6 +87,5 @@ public:
 
 	~dies() { };
 };
-
 
 #endif // !DATE_HPP
