@@ -1,8 +1,6 @@
 
 #include "../date.hpp"
 
-
-
 bool leapyear(int Y) {
 	if (Y % 100 == 0) {
 		if (Y % 400 == 0) return true;
@@ -307,9 +305,35 @@ int operator - (dies b, dies a) {
 
 		}
 	} else if (a.YYYY == b.YYYY && a.MM == b.MM && a.DD == b.DD) {
-		std::cout << "kek";
 		return sign * 1;
 	} else if (a.YYYY == b.YYYY && a.MM == b.MM && a.DD != b.DD) {
 		return sign * (b.DD - a.DD);
-	} else return 0;
+	} return 0;
 }
+
+dies operator++(dies &X) {
+	return X += 1;
+}
+
+dies operator--(dies &X) {
+	return X -= 1;
+}
+
+dies operator++(dies& X, int) {
+	return X += 1;
+}
+
+dies operator--(dies& X, int) {
+	return X -= 1;
+}
+
+dies dies::operator += (int X) {
+	*this = *this + X;
+	return *this;
+}
+
+dies dies::operator -= (int X) {
+	*this = *this - X;
+	return *this;
+}
+

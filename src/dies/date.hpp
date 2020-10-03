@@ -8,6 +8,9 @@
 #endif // !BASE_H
 
 
+#ifndef DATE_HPP
+#define DATE_HPP
+
 
 
 	#define INT_CHECK 6666
@@ -62,6 +65,15 @@ public:
 	dies operator + (int X);
 	dies operator = (dies& X);
 
+	friend dies operator ++ (dies &X);
+	friend dies operator -- (dies &X);
+	friend dies operator -- (dies &X, int);
+	friend dies operator ++ (dies &X, int);
+
+	dies operator += (int X);
+	dies operator -= (int X);
+
+
 	int getDay() {
 		return this->DD;
 	}
@@ -76,3 +88,4 @@ public:
 };
 
 
+#endif // !DATE_HPP

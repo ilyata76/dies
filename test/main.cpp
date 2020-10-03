@@ -27,6 +27,12 @@ int main()
 	std::cout << ( b - a )  << std::endl;
 	std::cout << ( d - a )  << std::endl;
 	std::cout << a  << std::endl;
+	std::cout << ++a  << std::endl;
+	std::cout << a++ << std::endl;
+	a += 10;
+	std::cout << a << std::endl;
+	a -= 10;
+	std::cout << a << std::endl;
 	std::cout << d.getDay() << std::endl;
 
 	//sap[ fksodaifjsadio fjsoifajsfiosadjif b-a a-b чё за хута
