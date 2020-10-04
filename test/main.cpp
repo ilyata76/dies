@@ -1,5 +1,3 @@
-#include <iostream>
-
 #include "../src/dies.hpp"
 
 
@@ -9,9 +7,10 @@ int main()
 {
 	system("chcp 65001");
 
-	dies a = { 1,1,1 }; dies b = { 2021, 10, 10 };
+	dies a = { 2021, 1, 24 }; dies b = { 2021, 12, 12 };
 
-	//sap[ fksodaifjsadio fjsoifajsfiosadjif b-a a-b чё за хута
+	std::cout << drand(a, b) << std::endl;
+	
 	system("pause");
 	return 0;
 }

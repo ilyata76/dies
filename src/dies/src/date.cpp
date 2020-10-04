@@ -181,7 +181,7 @@ dies dies::operator = (dies& X) {
 	} else {
 		system("chcp 65001");
 		std::cerr << std::boolalpha << "X.CHECK() == " << X.CHECK() << std::endl;
-		return false;
+		return { INT_CHECK, INT_CHECK, INT_CHECK };
 	}
 
 }
@@ -212,7 +212,7 @@ dies dies::operator+ (int X) {
 	} else {
 		system("chcp 65001");
 		std::cerr << std::boolalpha << "this->CHECK() == " << this->CHECK() << std::endl;
-		return false;
+		return { INT_CHECK, INT_CHECK, INT_CHECK };
 	}
 }
 
@@ -233,7 +233,7 @@ dies dies::operator - (int X) {
 	} else {
 		system("chcp 65001");
 		std::cerr << std::boolalpha << "this->CHECK() == " << this->CHECK() << std::endl;
-		return false;
+		return { INT_CHECK, INT_CHECK, INT_CHECK };
 	}
 }
 
@@ -332,7 +332,7 @@ int operator - (dies b, dies a) {
 	} else {
 		system("chcp 65001");
 		std::cerr << std::boolalpha << "a.CHECK() == " << a.CHECK() << "b.CHECK() == " << b.CHECK() << std::endl;
-		return false;
+		return 0;
 	}
 }
 
@@ -342,7 +342,7 @@ dies operator++(dies &X) {
 	} else {
 		system("chcp 65001");
 		std::cerr << std::boolalpha << "X.CHECK() == " << X.CHECK() << std::endl;
-		return false;
+		return { INT_CHECK, INT_CHECK, INT_CHECK };
 	}
 }
 
@@ -352,7 +352,7 @@ dies operator--(dies &X) {
 	} else {
 		system("chcp 65001");
 		std::cerr << std::boolalpha << "X.CHECK() == " << X.CHECK() << std::endl;
-		return false;
+		return { INT_CHECK, INT_CHECK, INT_CHECK };
 	}
 }
 
@@ -362,7 +362,7 @@ dies operator++(dies& X, int) {
 	} else {
 		system("chcp 65001");
 		std::cerr << std::boolalpha << "X.CHECK() == " << X.CHECK() << std::endl;
-		return false;
+		return { INT_CHECK, INT_CHECK, INT_CHECK };
 	}
 }
 
@@ -372,7 +372,7 @@ dies operator--(dies& X, int) {
 	} else {
 		system("chcp 65001");
 		std::cerr << std::boolalpha << "X.CHECK() == " << X.CHECK() << std::endl;
-		return false;
+		return { INT_CHECK, INT_CHECK, INT_CHECK };
 	}
 }
 
@@ -383,7 +383,7 @@ dies dies::operator += (int X) {
 	} else {
 		system("chcp 65001");
 		std::cerr << std::boolalpha << "this->CHECK() == " << this->CHECK() << std::endl;
-		return false;
+		return { INT_CHECK, INT_CHECK, INT_CHECK };
 	}
 }
 
@@ -394,8 +394,6 @@ dies dies::operator -= (int X) {
 	} else {
 		system("chcp 65001");
 		std::cerr << std::boolalpha << "this->CHECK() == " << this->CHECK() << std::endl;
-		return false;
+		return { INT_CHECK, INT_CHECK, INT_CHECK };
 	}
 }
-
-// ÏÐÎÂÅÐÊÀ .CHECK ÂÎ ÂÑÅÕ ÔÓÍÊÖÈßÕ
