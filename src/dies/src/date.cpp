@@ -61,8 +61,8 @@ bool operator > (dies& a, dies& b) {
 			} else return false;
 		} else return false;
 	} else {
-		system("chcp 65001");
-		std::cerr << std::boolalpha << "a.CHECK() == " << a.CHECK() << "; b.CHECK() == " << b.CHECK() << std::endl;
+		//system("chcp 65001");
+		//std::cerr << std::boolalpha << "a.CHECK() == " << a.CHECK() << "; b.CHECK() == " << b.CHECK() << std::endl;
 		return false;
 	}
 }
@@ -82,8 +82,8 @@ bool operator >= (dies& a, dies& b) {
 			} else return false;
 		} else return false;
 	} else {
-		system("chcp 65001");
-		std::cerr << std::boolalpha << "a.CHECK() == " << a.CHECK() << "; b.CHECK() == " << b.CHECK() << std::endl;
+		//system("chcp 65001");
+		//std::cerr << std::boolalpha << "a.CHECK() == " << a.CHECK() << "; b.CHECK() == " << b.CHECK() << std::endl;
 		return false;
 	}
 }
@@ -103,8 +103,8 @@ bool operator < (dies& a, dies& b) {
 			} else return false;
 		} else return false;
 	} else {
-		system("chcp 65001");
-		std::cerr << std::boolalpha << "a.CHECK() == " << a.CHECK() << "; b.CHECK() == " << b.CHECK() << std::endl;
+		//system("chcp 65001");
+		//std::cerr << std::boolalpha << "a.CHECK() == " << a.CHECK() << "; b.CHECK() == " << b.CHECK() << std::endl;
 		return false;
 	}
 }
@@ -124,8 +124,8 @@ bool operator <= (dies& a, dies& b) {
 			} else return false;
 		} else return false;
 	} else {
-		system("chcp 65001");
-		std::cerr << std::boolalpha << "a.CHECK() == " << a.CHECK() << "; b.CHECK() == " << b.CHECK() << std::endl;
+		//system("chcp 65001");
+		//std::cerr << std::boolalpha << "a.CHECK() == " << a.CHECK() << "; b.CHECK() == " << b.CHECK() << std::endl;
 		return false;
 	}
 }
@@ -139,8 +139,8 @@ bool operator == (dies& a, dies& b) {
 			} else return false;
 		} else return false;
 	} else {
-		system("chcp 65001");
-		std::cerr << std::boolalpha << "a.CHECK() == " << a.CHECK() << "; b.CHECK() == " << b.CHECK() << std::endl;
+		//system("chcp 65001");
+		//std::cerr << std::boolalpha << "a.CHECK() == " << a.CHECK() << "; b.CHECK() == " << b.CHECK() << std::endl;
 		return false;
 	}
 }
@@ -153,7 +153,7 @@ std::ostream& operator << (std::ostream& out, dies& X) {
 			<< std::setw(2) << std::setfill('0') << X.getDay();
 		return out;
 	} else { 
-		system("chcp 65001");
+		//system("chcp 65001");
 		out 
 			<< std::boolalpha << "X.CHECK() == " << X.CHECK() << std::endl;
 		return out;
@@ -179,8 +179,8 @@ dies dies::operator = (dies& X) {
 		this->DD = X.DD; this->MM = X.MM; this->YYYY = X.YYYY;
 		return *this;
 	} else {
-		system("chcp 65001");
-		std::cerr << std::boolalpha << "X.CHECK() == " << X.CHECK() << std::endl;
+		//system("chcp 65001");
+		//std::cerr << std::boolalpha << "X.CHECK() == " << X.CHECK() << std::endl;
 		return { INT_CHECK, INT_CHECK, INT_CHECK };
 	}
 
@@ -210,8 +210,8 @@ dies dies::operator+ (int X) {
 		}
 		return result;
 	} else {
-		system("chcp 65001");
-		std::cerr << std::boolalpha << "this->CHECK() == " << this->CHECK() << std::endl;
+		//system("chcp 65001");
+		//std::cerr << std::boolalpha << "this->CHECK() == " << this->CHECK() << std::endl;
 		return { INT_CHECK, INT_CHECK, INT_CHECK };
 	}
 }
@@ -231,8 +231,8 @@ dies dies::operator - (int X) {
 		}
 		return result;
 	} else {
-		system("chcp 65001");
-		std::cerr << std::boolalpha << "this->CHECK() == " << this->CHECK() << std::endl;
+		//system("chcp 65001");
+		//std::cerr << std::boolalpha << "this->CHECK() == " << this->CHECK() << std::endl;
 		return { INT_CHECK, INT_CHECK, INT_CHECK };
 	}
 }
@@ -330,8 +330,8 @@ int operator - (dies b, dies a) {
 			return sign * (b.DD - a.DD);
 		} return 0;
 	} else {
-		system("chcp 65001");
-		std::cerr << std::boolalpha << "a.CHECK() == " << a.CHECK() << "b.CHECK() == " << b.CHECK() << std::endl;
+		//system("chcp 65001");
+		//std::cerr << std::boolalpha << "a.CHECK() == " << a.CHECK() << "b.CHECK() == " << b.CHECK() << std::endl;
 		return 0;
 	}
 }
@@ -340,8 +340,8 @@ dies operator++(dies &X) {
 	if (X.CHECK()) {
 		return X += 1;
 	} else {
-		system("chcp 65001");
-		std::cerr << std::boolalpha << "X.CHECK() == " << X.CHECK() << std::endl;
+		//system("chcp 65001");
+		//std::cerr << std::boolalpha << "X.CHECK() == " << X.CHECK() << std::endl;
 		return { INT_CHECK, INT_CHECK, INT_CHECK };
 	}
 }
@@ -350,8 +350,8 @@ dies operator--(dies &X) {
 	if (X.CHECK()) {
 		return X -= 1;
 	} else {
-		system("chcp 65001");
-		std::cerr << std::boolalpha << "X.CHECK() == " << X.CHECK() << std::endl;
+		//system("chcp 65001");
+		//std::cerr << std::boolalpha << "X.CHECK() == " << X.CHECK() << std::endl;
 		return { INT_CHECK, INT_CHECK, INT_CHECK };
 	}
 }
@@ -360,8 +360,8 @@ dies operator++(dies& X, int) {
 	if (X.CHECK()) {
 		return X += 1;
 	} else {
-		system("chcp 65001");
-		std::cerr << std::boolalpha << "X.CHECK() == " << X.CHECK() << std::endl;
+		//system("chcp 65001");
+		//std::cerr << std::boolalpha << "X.CHECK() == " << X.CHECK() << std::endl;
 		return { INT_CHECK, INT_CHECK, INT_CHECK };
 	}
 }
@@ -370,8 +370,8 @@ dies operator--(dies& X, int) {
 	if (X.CHECK()) {
 		return X -= 1;
 	} else {
-		system("chcp 65001");
-		std::cerr << std::boolalpha << "X.CHECK() == " << X.CHECK() << std::endl;
+		//system("chcp 65001");
+		//std::cerr << std::boolalpha << "X.CHECK() == " << X.CHECK() << std::endl;
 		return { INT_CHECK, INT_CHECK, INT_CHECK };
 	}
 }
@@ -381,8 +381,8 @@ dies dies::operator += (int X) {
 		*this = *this + X;
 		return *this;
 	} else {
-		system("chcp 65001");
-		std::cerr << std::boolalpha << "this->CHECK() == " << this->CHECK() << std::endl;
+		//system("chcp 65001");
+		//std::cerr << std::boolalpha << "this->CHECK() == " << this->CHECK() << std::endl;
 		return { INT_CHECK, INT_CHECK, INT_CHECK };
 	}
 }
@@ -392,8 +392,8 @@ dies dies::operator -= (int X) {
 		*this = *this - X;
 		return *this;
 	} else {
-		system("chcp 65001");
-		std::cerr << std::boolalpha << "this->CHECK() == " << this->CHECK() << std::endl;
+		//system("chcp 65001");
+		//std::cerr << std::boolalpha << "this->CHECK() == " << this->CHECK() << std::endl;
 		return { INT_CHECK, INT_CHECK, INT_CHECK };
 	}
 }
