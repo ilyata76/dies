@@ -21,7 +21,7 @@ float float_rand_result(float a, float b) {
 }
 
 dies drand(dies a = { 1,1,1 }, dies b = { 1,1,1 }) {
-	if (a.CHECK() && b.CHECK()) {
+	if (a.CheckDate() && b.CheckDate()) {
 		dies result = { 1, 1, 1 };
 		int Y = INT_CHECK, M = INT_CHECK, D = INT_CHECK;
 		if (b < a) { dies temp{ 1,1,1 }; temp = a; a = b; b = temp; };
@@ -39,9 +39,9 @@ dies drand(dies a = { 1,1,1 }, dies b = { 1,1,1 }) {
 						D = int_rand_result(a.getDay(), 31);
 					} else if (M == 4 || M == 6 || M == 9 || M == 11) {
 						D = int_rand_result(a.getDay(), 30);
-					} else if (M == 2 && leapyear(Y)) {
+					} else if (M == 2 && LeapYear(Y)) {
 						D = int_rand_result(a.getDay(), 29);
-					} else if (M == 2 && !leapyear(Y)) {
+					} else if (M == 2 && !LeapYear(Y)) {
 						D = int_rand_result(a.getDay(), 28);
 					} //else return
 				} else {
@@ -49,9 +49,9 @@ dies drand(dies a = { 1,1,1 }, dies b = { 1,1,1 }) {
 						D = int_rand_result(1, 31);
 					} else if (M == 4 || M == 6 || M == 9 || M == 11) {
 						D = int_rand_result(1, 30);
-					} else if (M == 2 && leapyear(Y)) {
+					} else if (M == 2 && LeapYear(Y)) {
 						D = int_rand_result(1, 29);
-					} else if (M == 2 && !leapyear(Y)) {
+					} else if (M == 2 && !LeapYear(Y)) {
 						D = int_rand_result(1, 28);
 					} //else return
 				}
@@ -65,9 +65,9 @@ dies drand(dies a = { 1,1,1 }, dies b = { 1,1,1 }) {
 						D = int_rand_result(1, 31);
 					} else if (M == 4 || M == 6 || M == 9 || M == 11) {
 						D = int_rand_result(1, 30);
-					} else if (M == 2 && leapyear(Y)) {
+					} else if (M == 2 && LeapYear(Y)) {
 						D = int_rand_result(1, 29);
-					} else if (M == 2 && !leapyear(Y)) {
+					} else if (M == 2 && !LeapYear(Y)) {
 						D = int_rand_result(1, 28);
 					} // else return
 				}
@@ -79,9 +79,9 @@ dies drand(dies a = { 1,1,1 }, dies b = { 1,1,1 }) {
 					D = int_rand_result(1, 31);
 				} else if (M == 4 || M == 6 || M == 9 || M == 11) {
 					D = int_rand_result(1, 30);
-				} else if (M == 2 && leapyear(Y)) {
+				} else if (M == 2 && LeapYear(Y)) {
 					D = int_rand_result(1, 29);
-				} else if (M == 2 && !leapyear(Y)) {
+				} else if (M == 2 && !LeapYear(Y)) {
 					D = int_rand_result(1, 28);
 				} // else return
 			}
@@ -100,9 +100,9 @@ dies drand(dies a = { 1,1,1 }, dies b = { 1,1,1 }) {
 						D = int_rand_result(a.getDay(), 31);
 					} else if (M == 4 || M == 6 || M == 9 || M == 11) {
 						D = int_rand_result(a.getDay(), 30);
-					} else if (M == 2 && leapyear(Y)) {
+					} else if (M == 2 && LeapYear(Y)) {
 						D = int_rand_result(a.getDay(), 29);
-					} else if (M == 2 && !leapyear(Y)) {
+					} else if (M == 2 && !LeapYear(Y)) {
 						D = int_rand_result(a.getDay(), 28);
 					}
 				} else if (M == b.getMonth()) {
@@ -112,9 +112,9 @@ dies drand(dies a = { 1,1,1 }, dies b = { 1,1,1 }) {
 						D = int_rand_result(1, 31);
 					} else if (M == 4 || M == 6 || M == 9 || M == 11) {
 						D = int_rand_result(1, 30);
-					} else if (M == 2 && leapyear(Y)) {
+					} else if (M == 2 && LeapYear(Y)) {
 						D = int_rand_result(1, 29);
-					} else if (M == 2 && !leapyear(Y)) {
+					} else if (M == 2 && !LeapYear(Y)) {
 						D = int_rand_result(1, 28);
 					}
 				}
@@ -128,7 +128,7 @@ dies drand(dies a = { 1,1,1 }, dies b = { 1,1,1 }) {
 		return result;
 	} else {
 		//system("chcp 65001");
-		//std::cerr << std::boolalpha << "a.CHECK() == " << a.CHECK() << "; b.CHECK() == " << b.CHECK() << std::endl;
+		//std::cerr << std::boolalpha << "a.CheckDate() == " << a.CheckDate() << "; b.CheckDate() == " << b.CheckDate() << std::endl;
 		return { INT_CHECK, INT_CHECK, INT_CHECK };
 	}
 }
