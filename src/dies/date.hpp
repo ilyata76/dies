@@ -1,12 +1,7 @@
 #pragma once
 
-#ifndef BASE_H
-	#define BASE_H
-
 	#include <iostream>
 	#include <iomanip>
-#endif // !BASE_H
-
 
 #ifndef DATE_HPP
 #define DATE_HPP

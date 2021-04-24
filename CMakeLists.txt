@@ -6,7 +6,9 @@ project (${PROJECT})
  
 set (HEADERS 
 	src/dies.hpp
-	src/dies/date.hpp)
+	src/dies/date.hpp
+	src/dies/drand.hpp
+)
  
 set (SOURCES 
 	src/dies/src/date.cpp

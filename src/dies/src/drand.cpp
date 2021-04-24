@@ -127,7 +127,7 @@ dies drand(dies a = { 1,1,1 }, dies b = { 1,1,1 }) {
 		result.input(Y, M, D);
 		return result;
 	} else {
-		system("chcp 65001");
+		//system("chcp 65001");
 		//std::cerr << std::boolalpha << "a.CHECK() == " << a.CHECK() << "; b.CHECK() == " << b.CHECK() << std::endl;
 		return { INT_CHECK, INT_CHECK, INT_CHECK };
 	}

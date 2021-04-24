@@ -1,4 +1,3 @@
-
 #include "../date.hpp"
 
 bool leapyear(int Y) {
