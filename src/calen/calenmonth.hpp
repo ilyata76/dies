@@ -14,6 +14,8 @@
 		public:
 			int weaks;
 			int days;
+			int month;
+			int monthofyear;
 			calenday startingDay;
 			calenday endingDay;
 
@@ -22,9 +24,9 @@
 			// !B
 
 		public:
-			calenmonth() { this->weaks = 0; this->days = 0; this->startingDay = { 1,1,1 }; this->endingDay = { 1,1,1 }; };
-			calenmonth(int Weaks, int Days, calenday stDay, calenday enDay, std::vector <calenday> aOD) {
-				this->weaks = Weaks; this->days = Days; this->startingDay = stDay; this->endingDay = enDay; this->arrayOfDays = aOD;
+			calenmonth() { this->weaks = 0; this->days = 0; this->month = 0; this->monthofyear = 0; this->startingDay = { 1,4,1,1,1920 }; this->endingDay = { 1,4,1,1,1920 }; };
+			calenmonth(int Weaks, int Days, int Month, int yom, calenday stDay, calenday enDay, std::vector <calenday> aOD) {
+				this->weaks = Weaks; this->days = Days; this->month = Month; this->monthofyear = yom; this->startingDay = stDay; this->endingDay = enDay; this->arrayOfDays = aOD;
 			};
 			~calenmonth() {};
 		};

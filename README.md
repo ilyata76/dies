@@ -5,6 +5,7 @@
 LeapYear(int Y)  
 YearMonthDayCheck(int Year, int Month, int Day)  
 DayOfMonth(int month or string month, int year)  
+toLower(string)  
 dies() make object (INT_CHECK)  
 dies(int x) make object xxxx.xx.xx  
 dies(int Year, int Month, int Day)  
@@ -27,5 +28,8 @@ operators:
 int_rand_result(int a, int b)  
 float_rand_result(float a, float b)  
 drand(date a, date b)  
+  
+  
+## CALEN_CPP  
   
 # Compile with CMake  
