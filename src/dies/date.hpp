@@ -3,6 +3,7 @@
 	#include <iostream>
 	#include <iomanip>
 
+
 #ifndef DATE_HPP
 #define DATE_HPP
 
@@ -19,6 +20,8 @@
 
 		bool YearMonthDayCheck(int Y, int M, int D);
 		bool LeapYear(int Y);
+		int DayOfMonth(int Month, int Year);
+		int DayOfMonth(std::string Month, int Year);
 
 
 	class dies {
