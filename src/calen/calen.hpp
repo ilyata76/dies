@@ -34,12 +34,13 @@
 				//this->startingMonth; this->endingMonth; this->startingDay; this->endingDay;
 				this->years = 0;
 			};
+		private:
 			calen(int ORIENT, int stYear, int enYear, calenmonth stMonth, calenmonth enMonth, calenday stDay, calenday enDay, std::vector <calenmonth> aOM) {
 				this->orientation = ORIENT; this->startingYear = stYear; this->endingYear = enYear;
 				this->startingMonth = stMonth; this->endingMonth = enMonth; this->startingDay = stDay; this->endingDay = enDay;
 				this->arrayOfMonths = aOM;
 			};
-
+		public:
 			void calenOC(calen object); // out-console
 			void calenOF(calen object); // out-file
 
@@ -62,6 +63,7 @@
 		// то есть координаты: weak = 1 number = 4 day = 1
 
 		calenday getDayStartingCalen(dies DATE);
+		calenmonth createCalenMonth(calenday& startingDay, dies DATE);
 
 
 	}

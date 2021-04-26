@@ -13,8 +13,12 @@ calen::calenday calen::getDayStartingCalen(dies DATE) {
 		std1920.weak = 1;
 		std1920.number = 4;
 		std1920.dayofmonth = 1;
+		std1920.dayofyear = 1920;
 
-	if (!DATE.CheckDate()) return std1920;
+		if (!DATE.CheckDate() || DATE.getYear() < 1920) { 
+			std::cerr << "ERROR: invalid date\n";
+			return std1920; 
+		}
 
 	calenmonth stm1920;
 		stm1920.weaks = 0;
@@ -85,4 +89,40 @@ calen::calenday calen::getDayStartingCalen(dies DATE) {
 	iterday.dayofyear = itermonth.monthofyear;
 	itermonth.~calenmonth();
 	return iterday;	
+}
+
+
+calen::calenmonth calen::createCalenMonth(calenday& startingDay, dies DATE) {
+	
+	calenmonth result;
+		result.days = DayOfMonth(startingDay.dayofmonth, startingDay.dayofyear);
+		result.month = startingDay.dayofmonth;
+		result.startingDay = startingDay;
+		result.monthofyear = startingDay.dayofyear;
+		result.arrayOfDays.push_back(startingDay);
+
+	if (!DATE.CheckDate() || DATE.getYear() < 1920) {
+		std::cerr << "ERROR: invalid date\n";
+		return result;
+	}
+
+	calenday iterday = startingDay;
+
+	if (DATE.getMonth() == result.month && DATE.getYear() == result.monthofyear) {
+		for (int i = 0; DATE.getDay() != result.arrayOfDays[i].day; i++) {
+			while (iterday.day < DATE.getDay() && iterday.day < DayOfMonth(iterday.dayofmonth, iterday.dayofyear)) {
+				while (iterday.number <= 7 && iterday.day < DATE.getDay() && iterday.day < DayOfMonth(iterday.dayofmonth, iterday.dayofyear)) {
+					iterday.number++; iterday.day++;
+					if (iterday.number != 8) result.arrayOfDays.push_back(iterday);
+				}
+				if (iterday.number == 8) { iterday.number = 1; iterday.weak++; result.arrayOfDays.push_back(iterday); }
+			}
+		}
+	}
+
+	else {
+
+	}
+
+	return result;
 }
