@@ -1,9 +1,5 @@
 #pragma once
 
-	#include <iostream>
-	#include <iomanip>
-
-
 #ifndef DATE_HPP
 #define DATE_HPP
 
@@ -11,6 +7,8 @@
 
 		#define INT_CHECK 6666
 
+		#include <iostream>
+		#include <iomanip>
 
 	// dies.LeapYear() -> bool
 	// dies.YearMonthDayCheck() -> bool -> проверка сформировался ли класс -> if d/m/y == int_check return false

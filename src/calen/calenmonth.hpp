@@ -19,9 +19,7 @@
 			calenday startingDay;
 			calenday endingDay;
 
-			// B
 			std::vector <calenday> arrayOfDays;
-			// !B
 
 		public:
 			calenmonth() { this->weaks = 0; this->days = 0; this->month = 0; this->monthofyear = 0; this->startingDay = { 1,4,1,1,1920 }; this->endingDay = { 1,4,1,1,1920 }; };

@@ -5,7 +5,6 @@
 
 
 calen::calenday calen::getDayStartingCalen(dies DATE) {
-
 	using namespace calen;
 
 	calenday std1920;
@@ -88,24 +87,27 @@ calen::calenday calen::getDayStartingCalen(dies DATE) {
 	iterday.dayofmonth = itermonth.month;
 	iterday.dayofyear = itermonth.monthofyear;
 	itermonth.~calenmonth();
+
 	return iterday;	
 }
 
 
 calen::calenmonth calen::createCalenMonth(calenday& startingDay, dies DATE) {
-	
+	using namespace calen;
+
 	calenmonth result;
+
+	if (!DATE.CheckDate() || DATE.getYear() < 1920) {
+		std::cerr << "ERROR: invalid date\n";
+		return result;
+	}
+
 		result.weaks = startingDay.weak;
 		result.days = DayOfMonth(startingDay.dayofmonth, startingDay.dayofyear);
 		result.month = startingDay.dayofmonth;
 		result.startingDay = startingDay;
 		result.monthofyear = startingDay.dayofyear;
 		result.arrayOfDays.push_back(startingDay);
-
-	if (!DATE.CheckDate() || DATE.getYear() < 1920) {
-		std::cerr << "ERROR: invalid date\n";
-		return result;
-	}
 
 	if (DATE.getYear() < startingDay.dayofyear) {
 		std::cerr << "ERROR: invalid date-input (second date < first)\n";
@@ -179,6 +181,11 @@ calen::calen calen::createCalen(std::string ORIENTATION, dies startingDate, dies
 
 	calen result;
 
+	if (!endingDate.CheckDate() || !startingDate.CheckDate()) {
+		std::cerr << "ERROR\n";
+		return result;
+	}
+		
 		result.orientation = ORIENTATION;
 		result.startingYear = startingDate.getYear();
 		result.endingYear = endingDate.getYear();
@@ -235,10 +242,14 @@ void calen::calenOCraw(calen object) {
 	std::cout << "YEAR\tMONTH\tDAY\tNUMBER\tWEAK\n";
 	for (int i = 0; i < object.arrayOfMonths.size(); i++) {
 		for (int j = 0; j < object.arrayOfMonths[i].arrayOfDays.size(); j++) {
-			std::cout << object.arrayOfMonths[i].arrayOfDays[j].dayofyear << "\t" << object.arrayOfMonths[i].arrayOfDays[j].dayofmonth << "\t" << object.arrayOfMonths[i].arrayOfDays[j].day
-				<< "\t" << object.arrayOfMonths[i].arrayOfDays[j].number << "\t" << object.arrayOfMonths[i].arrayOfDays[j].weak << std::endl;
+			std::cout << object.arrayOfMonths[i].arrayOfDays[j].dayofyear << "\t" 
+				<< object.arrayOfMonths[i].arrayOfDays[j].dayofmonth << "\t" 
+				<< object.arrayOfMonths[i].arrayOfDays[j].day << "\t" 
+				<< object.arrayOfMonths[i].arrayOfDays[j].number << "\t" 
+				<< object.arrayOfMonths[i].arrayOfDays[j].weak << std::endl;
 		}
 	}
+	std::cout << "ENDOFOUTPUT";
 }
 
 void calen::calenOFraw(calen object, std::ofstream& file) {
@@ -246,8 +257,12 @@ void calen::calenOFraw(calen object, std::ofstream& file) {
 	file << "YEAR\tMONTH\tDAY\tNUMBER\tWEAK\n";
 	for (int i = 0; i < object.arrayOfMonths.size(); i++) {
 		for (int j = 0; j < object.arrayOfMonths[i].arrayOfDays.size(); j++) {
-			file << object.arrayOfMonths[i].arrayOfDays[j].dayofyear << "\t" << object.arrayOfMonths[i].arrayOfDays[j].dayofmonth << "\t" << object.arrayOfMonths[i].arrayOfDays[j].day
-				<< "\t" << object.arrayOfMonths[i].arrayOfDays[j].number << "\t" << object.arrayOfMonths[i].arrayOfDays[j].weak << std::endl;
+			file << object.arrayOfMonths[i].arrayOfDays[j].dayofyear << "\t"
+				<< object.arrayOfMonths[i].arrayOfDays[j].dayofmonth << "\t"
+				<< object.arrayOfMonths[i].arrayOfDays[j].day << "\t"
+				<< object.arrayOfMonths[i].arrayOfDays[j].number << "\t"
+				<< object.arrayOfMonths[i].arrayOfDays[j].weak << std::endl;
 		}
 	}
+	file << "ENDOFFILE";
 }
