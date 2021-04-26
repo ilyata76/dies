@@ -34,5 +34,7 @@ drand(date a, date b)
   
 getDayStartingCalen(dies) - просчёт с января 1920 return calenday  
 createCalenMonth(calenday, dies) - формирование одного месяца return calenmonth, изменяет calenday на следующий  
+
+createCalen(string, dies, dies) - создаёт объект calen::calen
   
 # Compile with CMake  

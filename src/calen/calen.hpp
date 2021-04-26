@@ -11,8 +11,8 @@
 		// TODO B: сделать разбиение всего календаря на годы, годы на месяцы, месяцы на дни, чтобы обращаться можно было к каждому из них
 			// как метод или как надстройку?
 		class calen {
-		private:
-			int orientation;
+		public:
+			std::string orientation;
 			
 			int startingYear;
 			int endingYear;
@@ -30,7 +30,7 @@
 
 		public:
 			calen() { 
-				this->orientation = 0; this->startingYear = 1; this->endingYear = 1; 
+				this->orientation = ""; this->startingYear = 1; this->endingYear = 1; 
 				//this->startingMonth; this->endingMonth; this->startingDay; this->endingDay;
 				this->years = 0;
 			};
@@ -43,21 +43,11 @@
 		public:
 			void calenOC(calen object); // out-console
 			void calenOF(calen object); // out-file
+			void calenOCraw(calen object); // only coords in console
+			void calenOFraw(calen object); // only coords in file
 
 			~calen() {};
 		};
-
-		// нужно досчитать до координат нужного дня и месяца
-		// после определить координаты начального дня
-		// начать счёт и заполнение месяца калена, начиная с нужного нам дня (т.е. первый месяц будет как бы неполным)
-		// при переходе через месяц (нам известно Month в полях месяца), заканчивать заполнение и переходить на следующий месяц
-		// и так до нужного нам конечного дня
-
-
-		// сначала определим координаты начального дня калена
-
-		// следующая задача - формирование первого месяца
-
 
 		// 1 январь 1920 г - четверг . 31 декабря - пятница
 		// то есть координаты: weak = 1 number = 4 day = 1

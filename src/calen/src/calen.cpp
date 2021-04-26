@@ -177,8 +177,54 @@ calen::calenmonth calen::createCalenMonth(calenday& startingDay, dies DATE) {
 calen::calen calen::createCalen(std::string ORIENTATION, dies startingDate, dies endingDate) {
 	using namespace calen;
 
+	calen result;
+
+		result.orientation = ORIENTATION;
+		result.startingYear = startingDate.getYear();
+		result.endingYear = endingDate.getYear();
+		result.years = result.endingYear - result.startingYear + 1;
+
 	calenday startingDay = getDayStartingCalen(startingDate);
 
+		result.startingDay = startingDay;
 
-	return calen();
+	calenmonth startingMonth = createCalenMonth(startingDay,
+		dies(startingDay.dayofyear, startingDay.dayofmonth, DayOfMonth(startingDay.dayofmonth, startingDay.dayofyear))
+	);
+
+		result.startingMonth = startingMonth;
+		result.arrayOfMonths.push_back(startingMonth);
+
+	if (endingDate.getYear() == startingMonth.monthofyear) {
+		while (startingMonth.month < endingDate.getMonth() - 1) {
+			startingMonth = createCalenMonth(startingDay,
+				dies(startingDay.dayofyear, startingDay.dayofmonth, DayOfMonth(startingDay.dayofmonth, startingDay.dayofyear)));
+
+				result.arrayOfMonths.push_back(startingMonth);
+		};
+	} else {
+		while (startingMonth.monthofyear != endingDate.getYear()) {
+			startingMonth = createCalenMonth(startingDay,
+				dies(startingDay.dayofyear, startingDay.dayofmonth, DayOfMonth(startingDay.dayofmonth, startingDay.dayofyear)));
+
+			result.arrayOfMonths.push_back(startingMonth);
+		};
+		while (startingMonth.month < endingDate.getMonth() - 1) {
+			startingMonth = createCalenMonth(startingDay,
+				dies(startingDay.dayofyear, startingDay.dayofmonth, DayOfMonth(startingDay.dayofmonth, startingDay.dayofyear)));
+
+			result.arrayOfMonths.push_back(startingMonth);
+		};
+	}
+
+
+	startingMonth = createCalenMonth(startingDay,
+		dies(startingDay.dayofyear, startingDay.dayofmonth, endingDate.getDay())
+	);
+
+		result.arrayOfMonths.push_back(startingMonth);
+		result.endingMonth = startingMonth;
+		result.endingDay = startingMonth.arrayOfDays[startingMonth.arrayOfDays.size() - 1];
+
+	return result;
 }

@@ -23,6 +23,8 @@
 		int DayOfMonth(int Month, int Year);
 		int DayOfMonth(std::string Month, int Year);
 
+		std::string toLower(std::string);
+
 
 	class dies {
 	protected:
