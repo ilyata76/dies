@@ -1,7 +1,5 @@
 #include "../calenmonth.hpp"
 
-
-
 std::string calen::nameOfMonth(int Month) {
 	if (Month == 1) return "January";
 	else if (Month == 2) return "February";

@@ -1,8 +1,6 @@
 #include "../calen.hpp"
 
-// 1 €нварь 1920 г - четверг . 31 декабр€ - п€тница
-// то есть координаты: weak = 1 number = 4 day = 1
-
+// 1 jan 1920: weak = 1 number = 4 day = 1
 
 calen::calenday calen::getDayStartingCalen(dies DATE) {
 	using namespace calen;
