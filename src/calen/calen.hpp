@@ -64,6 +64,7 @@
 
 		calenday getDayStartingCalen(dies DATE);
 		calenmonth createCalenMonth(calenday& startingDay, dies DATE);
+		calen createCalen(std::string ORIENTATION, dies startingDate, dies endingDate);
 
 
 	}

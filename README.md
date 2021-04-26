@@ -32,4 +32,7 @@ drand(date a, date b)
   
 ## CALEN_CPP  
   
+getDayStartingCalen(dies) - просчёт с января 1920 return calenday  
+createCalenMonth(calenday, dies) - формирование одного месяца return calenmonth, изменяет calenday на следующий  
+  
 # Compile with CMake  

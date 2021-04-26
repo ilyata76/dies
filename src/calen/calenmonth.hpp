@@ -31,6 +31,7 @@
 			~calenmonth() {};
 		};
 
+		std::string nameOfMonth(int Month);
 	}
 
 #endif // !CALENMONTH_HPP

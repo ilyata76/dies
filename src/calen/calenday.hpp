@@ -3,6 +3,8 @@
 #ifndef CALENDAY_HPP
 #define CALENDAY_HPP
 
+	#include <string>
+
 	namespace calen {
 
 		class calenday {
@@ -18,6 +20,7 @@
 			~calenday() {};
 		};
 			
+		std::string nameOfNumber(int N);
 
 	}
 
