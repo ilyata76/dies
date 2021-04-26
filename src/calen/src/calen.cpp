@@ -228,3 +228,26 @@ calen::calen calen::createCalen(std::string ORIENTATION, dies startingDate, dies
 
 	return result;
 }
+
+
+void calen::calenOCraw(calen object) {
+	using namespace calen;
+	std::cout << "YEAR\tMONTH\tDAY\tNUMBER\tWEAK\n";
+	for (int i = 0; i < object.arrayOfMonths.size(); i++) {
+		for (int j = 0; j < object.arrayOfMonths[i].arrayOfDays.size(); j++) {
+			std::cout << object.arrayOfMonths[i].arrayOfDays[j].dayofyear << "\t" << object.arrayOfMonths[i].arrayOfDays[j].dayofmonth << "\t" << object.arrayOfMonths[i].arrayOfDays[j].day
+				<< "\t" << object.arrayOfMonths[i].arrayOfDays[j].number << "\t" << object.arrayOfMonths[i].arrayOfDays[j].weak << std::endl;
+		}
+	}
+}
+
+void calen::calenOFraw(calen object, std::ofstream& file) {
+	using namespace calen;
+	file << "YEAR\tMONTH\tDAY\tNUMBER\tWEAK\n";
+	for (int i = 0; i < object.arrayOfMonths.size(); i++) {
+		for (int j = 0; j < object.arrayOfMonths[i].arrayOfDays.size(); j++) {
+			file << object.arrayOfMonths[i].arrayOfDays[j].dayofyear << "\t" << object.arrayOfMonths[i].arrayOfDays[j].dayofmonth << "\t" << object.arrayOfMonths[i].arrayOfDays[j].day
+				<< "\t" << object.arrayOfMonths[i].arrayOfDays[j].number << "\t" << object.arrayOfMonths[i].arrayOfDays[j].weak << std::endl;
+		}
+	}
+}

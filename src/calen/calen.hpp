@@ -6,6 +6,7 @@
 	#include "../dies/date.hpp"
 	#include "./calenmonth.hpp"
 	#include <iostream>
+	#include <fstream>
 
 	namespace calen {
 		// TODO B: сделать разбиение всего календаря на годы, годы на месяцы, месяцы на дни, чтобы обращаться можно было к каждому из них
@@ -41,10 +42,7 @@
 				this->arrayOfMonths = aOM;
 			};
 		public:
-			void calenOC(calen object); // out-console
-			void calenOF(calen object); // out-file
-			void calenOCraw(calen object); // only coords in console
-			void calenOFraw(calen object); // only coords in file
+
 
 			~calen() {};
 		};
@@ -56,6 +54,10 @@
 		calenmonth createCalenMonth(calenday& startingDay, dies DATE);
 		calen createCalen(std::string ORIENTATION, dies startingDate, dies endingDate);
 
+		void calenOC(calen object); // out-console
+		void calenOF(calen object, std::ofstream& file); // out-file
+		void calenOCraw(calen object); // only coords in console
+		void calenOFraw(calen object, std::ofstream& file); // only coords in file
 
 	}
 

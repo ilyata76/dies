@@ -9,6 +9,7 @@ toLower(string)
 dies() make object (INT_CHECK)  
 dies(int x) make object xxxx.xx.xx  
 dies(int Year, int Month, int Day)  
+
   
 methods:  
     dies.input(int Year, int Month, int Day)  
@@ -35,6 +36,12 @@ drand(date a, date b)
 getDayStartingCalen(dies) - просчёт с января 1920 return calenday  
 createCalenMonth(calenday, dies) - формирование одного месяца return calenmonth, изменяет calenday на следующий  
 
-createCalen(string, dies, dies) - создаёт объект calen::calen
+createCalen(string, dies, dies) - создаёт объект calen::calen  
+  
+nameOfMonth(int)  
+nameOfNumber(int)  
+  
+calenOCraw(calen)  
+calenOFraw(calen, ofstream)  
   
 # Compile with CMake  
