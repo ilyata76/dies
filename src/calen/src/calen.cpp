@@ -130,6 +130,15 @@ calen::calenmonth calen::createCalenMonth(calenday& startingDay, dies DATE) {
 			if (iterday.number == 8) { iterday.number = 1; iterday.weak++; result.weaks++; result.arrayOfDays.push_back(iterday); }
 		}
 
+		if (iterday.day < DayOfMonth(iterday.dayofmonth, iterday.dayofyear)) {
+			while (iterday.day < DayOfMonth(iterday.dayofmonth, iterday.dayofyear)) {
+				while (iterday.number <= 7 && iterday.day < DayOfMonth(iterday.dayofmonth, iterday.dayofyear)) {
+					iterday.number++; iterday.day++;
+				}
+				if (iterday.number == 8) { iterday.number = 1; iterday.weak++; result.weaks++; }
+			}
+		}
+
 		int j = result.arrayOfDays.size() - 1;
 
 
@@ -222,6 +231,11 @@ calen::calen calen::createCalen(std::string ORIENTATION, dies startingDate, dies
 		};
 	}
 
+
+	if (startingDay.dayofyear != endingDate.getYear() || startingDay.dayofmonth != endingDate.getMonth()) {
+		std::cout << "ERROR\n";
+		return result;
+	}
 
 	startingMonth = createCalenMonth(startingDay,
 		dies(startingDay.dayofyear, startingDay.dayofmonth, endingDate.getDay())
